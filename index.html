@@ -1,118 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Noor - World's Best Girlfriend Award 🏆</title>
+<title>Noor - World's Best Girlfriend Award 👑</title>
+
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #fff5f5, #d2b48c);
+  font-family: 'Comic Sans MS', cursive;
   text-align: center;
+  background: linear-gradient(to bottom, #ffc0cb, #ff99cc);
   overflow-x: hidden;
+}
+
+/* Teddy Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.imgur.com/6Iej2c3.png');
+  background-size: 300px;
+  opacity: 0.15;
+  z-index: -1;
 }
 
 h1 {
   margin-top: 40px;
-  color: #6b3e26;
+  color: #b30059;
+  font-size: 40px;
 }
 
 button {
   padding: 12px 25px;
   font-size: 18px;
-  background: #8b5e3c;
+  background: #ff4da6;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   margin-top: 20px;
 }
 
-#winnerSection {
+#winnerSection, #gameSection, #finalLove {
   display: none;
   margin-top: 30px;
   font-size: 20px;
-  color: #5a2e1f;
+  color: #800040;
 }
 
-#gameSection {
-  display: none;
-  margin-top: 40px;
+.heart {
+  position: fixed;
+  color: red;
+  font-size: 20px;
+  animation: float 5s linear infinite;
 }
 
-.teddy {
-  width: 120px;
-  margin: 10px;
-}
-
-#loveMessage {
-  display: none;
-  margin-top: 30px;
-  font-size: 22px;
-  color: #7a3b2e;
-}
-</style>
-</head>
-
-<body>
-
-<h1>🏆 The World's Best Girlfriend Award 2026 🏆</h1>
-<p>After reviewing millions of girlfriends worldwide...</p>
-
-<button onclick="announceWinner()">Announce Winner</button>
-
-<div id="winnerSection">
-  <h2>🎉 And the Winner is... NOOR ❤️ 🎉</h2>
-  <p>
-  For surviving 3 beautiful years with me 😜<br>
-  For loving me since 8 February 2024 💕<br>
-  For being my peace, my happiness, and my forever person 💖<br><br>
-  Noor, you are the best thing that ever happened to me.
-  </p>
-
-  <img class="teddy" src="https://i.imgur.com/7Q8KQ1F.png">
-  <img class="teddy" src="https://i.imgur.com/7Q8KQ1F.png">
-
-  <br>
-  <button onclick="startGame()">Play Love Game 🎮</button>
-</div>
-
-<div id="gameSection">
-  <h2>💘 Love Challenge 💘</h2>
-  <p>Do you promise to stay with me forever? 😏</p>
-  <button onclick="yesLove()">YES ❤️</button>
-  <button onmouseover="moveButton(this)">NO 😈</button>
-</div>
-
-<div id="loveMessage">
-  <h2>HAHA I KNEW IT 😘</h2>
-  <p>
-  Three years with you feel like the most beautiful dream.<br>
-  Every smile of yours is my favorite view.<br>
-  Every hug of yours feels like home.<br><br>
-  I don’t just love you, Noor…  
-  I choose you. Every day. Forever. 💍❤️
-  </p>
-</div>
-
-<script>
-function announceWinner() {
-  document.getElementById("winnerSection").style.display = "block";
-}
-
-function startGame() {
-  document.getElementById("gameSection").style.display = "block";
-}
-
-function moveButton(btn) {
-  btn.style.position = "absolute";
-  btn.style.top = Math.random() * window.innerHeight + "px";
-  btn.style.left = Math.random() * window.innerWidth + "px";
-}
-
-function yesLove() {
-  document.getElementById("loveMessage").style.display = "block";
-}
-</script>
-
-</body>
-</html>
+@keyframes
