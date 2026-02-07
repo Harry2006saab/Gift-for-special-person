@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Noor - World's Best Girlfriend Award 👑</title>
+<title>Noor - World's Best Girlfriend 👑</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Comic Sans MS', cursive;
   text-align: center;
-  background: linear-gradient(to bottom, #ffc0cb, #ff99cc);
+  color: #b30059;
   overflow-x: hidden;
 }
 
-/* Teddy Background */
+/* Animated Teddy Background */
 body::before {
   content: "";
   position: fixed;
@@ -20,15 +20,16 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://i.imgur.com/6Iej2c3.png');
-  background-size: 300px;
-  opacity: 0.15;
+  background: 
+    linear-gradient(rgba(255,192,203,0.7), rgba(255,182,193,0.7)),
+    url("https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif");
+  background-size: cover;
+  background-position: center;
   z-index: -1;
 }
 
 h1 {
-  margin-top: 40px;
-  color: #b30059;
+  margin-top: 50px;
   font-size: 40px;
 }
 
@@ -43,17 +44,16 @@ button {
   margin-top: 20px;
 }
 
-#winnerSection, #gameSection, #finalLove {
+#winner, #game, #final {
   display: none;
   margin-top: 30px;
   font-size: 20px;
-  color: #800040;
 }
 
+/* Floating hearts */
 .heart {
   position: fixed;
-  color: red;
-  font-size: 20px;
+  font-size: 22px;
   animation: float 5s linear infinite;
 }
 
@@ -67,54 +67,52 @@ button {
 <body>
 
 <h1>🏆 World's Best Girlfriend Award 2026 👑</h1>
-<p>After 3 beautiful years since 8 Feb 2024...</p>
+<p>Celebrating 3 Beautiful Years Since 8 Feb 2024 💕</p>
 
-<button onclick="announce()">Announce Winner 💖</button>
+<button onclick="showWinner()">Announce Winner 💖</button>
 
-<div id="winnerSection">
-  <h2>🎉 The Winner is NOOR ❤️ 🎉</h2>
+<div id="winner">
+  <h2>🎉 And The Winner Is... NOOR ❤️ 🎉</h2>
   <p>
   For loving me endlessly 💕<br>
-  For tolerating my drama 😂<br>
+  For tolerating my nonsense 😂<br>
   For being my peace, my happiness, my forever 🥹<br><br>
-  Noor, you are not just my girlfriend…  
-  You are my entire world 🌍💖
+  Noor, you are my today, my tomorrow, my always ❤️
   </p>
-
   <button onclick="startGame()">Play Love Game 🎮</button>
 </div>
 
-<div id="gameSection">
+<div id="game">
   <h2>💘 Love Game 💘</h2>
-  <p>Who loves more?</p>
-  <button onclick="finalMessage()">Me 😎</button>
-  <button onclick="finalMessage()">You 😍</button>
+  <p>Who loves more? 😏</p>
+  <button onclick="showFinal()">Me 😎</button>
+  <button onclick="showFinal()">You 😍</button>
 </div>
 
-<div id="finalLove">
+<div id="final">
   <h2>HAHA WE BOTH DO 😘</h2>
   <p>
-  Three years with you feels like the best chapter of my life.<br>
-  Every hug feels like home 🏡<br>
-  Every smile of yours is my favorite thing 💕<br><br>
+  Three years with you feel like magic ✨<br>
+  Every smile of yours is my favorite view 💖<br>
+  Every hug feels like home 🏡<br><br>
   I choose you again and again. Forever. ❤️
   </p>
 </div>
 
 <script>
-function announce() {
-  document.getElementById("winnerSection").style.display = "block";
+function showWinner() {
+  document.getElementById("winner").style.display = "block";
 }
 
 function startGame() {
-  document.getElementById("gameSection").style.display = "block";
+  document.getElementById("game").style.display = "block";
 }
 
-function finalMessage() {
-  document.getElementById("finalLove").style.display = "block";
+function showFinal() {
+  document.getElementById("final").style.display = "block";
 }
 
-/* Floating hearts */
+/* Floating hearts effect */
 setInterval(() => {
   let heart = document.createElement("div");
   heart.className = "heart";
@@ -122,9 +120,11 @@ setInterval(() => {
   heart.style.left = Math.random() * 100 + "vw";
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 5000);
-}, 500);
+}, 600);
 </script>
 
 </body>
 </html>
+
+
 
