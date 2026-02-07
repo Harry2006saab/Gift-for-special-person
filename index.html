@@ -57,4 +57,74 @@ button {
   animation: float 5s linear infinite;
 }
 
-@keyframes
+@keyframes float {
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🏆 World's Best Girlfriend Award 2026 👑</h1>
+<p>After 3 beautiful years since 8 Feb 2024...</p>
+
+<button onclick="announce()">Announce Winner 💖</button>
+
+<div id="winnerSection">
+  <h2>🎉 The Winner is NOOR ❤️ 🎉</h2>
+  <p>
+  For loving me endlessly 💕<br>
+  For tolerating my drama 😂<br>
+  For being my peace, my happiness, my forever 🥹<br><br>
+  Noor, you are not just my girlfriend…  
+  You are my entire world 🌍💖
+  </p>
+
+  <button onclick="startGame()">Play Love Game 🎮</button>
+</div>
+
+<div id="gameSection">
+  <h2>💘 Love Game 💘</h2>
+  <p>Who loves more?</p>
+  <button onclick="finalMessage()">Me 😎</button>
+  <button onclick="finalMessage()">You 😍</button>
+</div>
+
+<div id="finalLove">
+  <h2>HAHA WE BOTH DO 😘</h2>
+  <p>
+  Three years with you feels like the best chapter of my life.<br>
+  Every hug feels like home 🏡<br>
+  Every smile of yours is my favorite thing 💕<br><br>
+  I choose you again and again. Forever. ❤️
+  </p>
+</div>
+
+<script>
+function announce() {
+  document.getElementById("winnerSection").style.display = "block";
+}
+
+function startGame() {
+  document.getElementById("gameSection").style.display = "block";
+}
+
+function finalMessage() {
+  document.getElementById("finalLove").style.display = "block";
+}
+
+/* Floating hearts */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}, 500);
+</script>
+
+</body>
+</html>
+
