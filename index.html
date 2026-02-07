@@ -4,60 +4,63 @@
 <title>Noor - Love Celebration 💖</title>
 
 <style>
-body {
+html, body {
   margin: 0;
-  font-family: 'Comic Sans MS', cursive;
-  text-align: center;
-  overflow-x: hidden;
-  color: #800040;
-}
-
-/* Animated Teddy Background */
-body::before {
-  content: "";
-  position: fixed;
+  padding: 0;
   width: 100%;
   height: 100%;
-  background:
-  linear-gradient(rgba(255,182,193,0.6), rgba(255,192,203,0.6)),
+  font-family: 'Comic Sans MS', cursive;
+  text-align: center;
+  color: #800040;
+  overflow-x: hidden;
+}
+
+/* Full Screen Teddy Background */
+body {
+  background: linear-gradient(rgba(255,182,193,0.6), rgba(255,192,203,0.6)),
   url("https://media.giphy.com/media/l0HlGdXFWYbKv5rby/giphy.gif");
   background-size: cover;
   background-position: center;
-  z-index: -1;
+  background-attachment: fixed;
 }
 
 h1 {
   margin-top: 40px;
-  font-size: 38px;
+  font-size: 36px;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 18px;
   background: #ff4da6;
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   cursor: pointer;
   margin: 10px;
 }
 
+#heartGame, #quizSection, #finalMessage {
+  display: none;
+  width: 100%;
+}
+
 #gameArea {
   position: relative;
+  width: 80%;
+  max-width: 600px;
   height: 400px;
-  border: 2px dashed #ff66b2;
-  margin: 20px;
+  margin: 20px auto;
+  border: 3px dashed #ff66b2;
+  background-color: rgba(255,255,255,0.5);
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .heart {
   position: absolute;
-  font-size: 25px;
+  font-size: 28px;
   cursor: pointer;
-}
-
-#quizSection, #finalMessage, #heartGame {
-  display: none;
 }
 
 </style>
@@ -65,13 +68,13 @@ button {
 
 <body>
 
-<h1>🏆 Noor - World's Best Girlfriend 💖</h1>
-<p>Celebrating 3 Years Since 8 Feb 2024 💕</p>
+<h1>💖 Noor - 3 Years of Love 💖</h1>
+<p>Since 8 Feb 2024 💕</p>
 
 <button onclick="startHeartGame()">Start Love Challenge 🎮</button>
 
 <div id="heartGame">
-<h2>💘 Catch The Hearts Game 💘</h2>
+<h2>💘 Catch The Hearts 💘</h2>
 <p>Score: <span id="score">0</span></p>
 <div id="gameArea"></div>
 <button onclick="startQuiz()">Next Game ➡</button>
@@ -79,19 +82,20 @@ button {
 
 <div id="quizSection">
 <h2>💖 Love Quiz 💖</h2>
-<p>Who said "I love you" first?</p>
-<button onclick="quizAnswer()">Me 😎</button>
-<button onclick="quizAnswer()">You 😍</button>
-<br>
+
+<p>Who loves more?</p>
+<button onclick="alert('Correct answer: BOTH 😘')">Me 😎</button>
+<button onclick="alert('Correct answer: BOTH 😘')">You 😍</button>
+
 <p>Who is more cute?</p>
-<button onclick="quizAnswer()">Noor 👑</button>
-<button onclick="quizAnswer()">Also Noor 😆</button>
-<br>
+<button onclick="alert('Obviously Noor 👑')">Noor 👑</button>
+<button onclick="alert('Still Noor 👑')">Also Noor 😆</button>
+
 <button onclick="showFinal()">Finish 💕</button>
 </div>
 
 <div id="finalMessage">
-<h2>HAHA YOU WIN EVERYTHING 😘</h2>
+<h2>🥰 Forever Together 🥰</h2>
 <p>
 Three years with you feel magical ✨<br>
 Every smile is my favorite 💖<br>
@@ -106,9 +110,11 @@ let gameInterval;
 
 function startHeartGame() {
   document.getElementById("heartGame").style.display = "block";
+  score = 0;
+  document.getElementById("score").innerText = score;
   spawnHeart();
-  gameInterval = setInterval(spawnHeart, 800);
-  setTimeout(() => clearInterval(gameInterval), 20000); // 20 sec game
+  gameInterval = setInterval(spawnHeart, 700);
+  setTimeout(() => clearInterval(gameInterval), 30000); // 30 sec game
 }
 
 function spawnHeart() {
@@ -125,7 +131,7 @@ function spawnHeart() {
       heart.remove();
       clearInterval(fall);
     }
-  }, 50);
+  }, 40);
 
   heart.onclick = function() {
     score++;
@@ -139,10 +145,6 @@ function startQuiz() {
   document.getElementById("quizSection").style.display = "block";
 }
 
-function quizAnswer() {
-  alert("Correct answer is always Noor 😘");
-}
-
 function showFinal() {
   document.getElementById("finalMessage").style.display = "block";
 }
@@ -150,4 +152,3 @@ function showFinal() {
 
 </body>
 </html>
-
