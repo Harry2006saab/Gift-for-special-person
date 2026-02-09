@@ -1,154 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Noor - Love Celebration 💖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 3rd Anniversary! ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Pacifico&display=swap');
 
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'Comic Sans MS', cursive;
-  text-align: center;
-  color: #800040;
-  overflow-x: hidden;
-}
+        body {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comic Neue', cursive;
+            overflow: hidden;
+            text-align: center;
+        }
 
-/* Full Screen Teddy Background */
-body {
-  background: linear-gradient(rgba(255,182,193,0.6), rgba(255,192,203,0.6)),
-  url("https://media.giphy.com/media/l0HlGdXFWYbKv5rby/giphy.gif");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+            max-width: 90%;
+            width: 400px;
+            position: relative;
+        }
 
-h1 {
-  margin-top: 40px;
-  font-size: 36px;
-}
+        h1 {
+            color: #ff4757;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
 
-button {
-  padding: 12px 25px;
-  font-size: 18px;
-  background: #ff4da6;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  margin: 10px;
-}
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
 
-#heartGame, #quizSection, #finalMessage {
-  display: none;
-  width: 100%;
-}
+        /* The Button Game */
+        .btn-group {
+            margin-top: 20px;
+            height: 60px;
+            position: relative;
+        }
 
-#gameArea {
-  position: relative;
-  width: 80%;
-  max-width: 600px;
-  height: 400px;
-  margin: 20px auto;
-  border: 3px dashed #ff66b2;
-  background-color: rgba(255,255,255,0.5);
-  overflow: hidden;
-  border-radius: 20px;
-}
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
 
-.heart {
-  position: absolute;
-  font-size: 28px;
-  cursor: pointer;
-}
+        .yes-btn {
+            background-color: #2ed573;
+            color: white;
+            box-shadow: 0 5px 0 #219f56;
+        }
 
-</style>
+        .yes-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #219f56;
+        }
+
+        .no-btn {
+            background-color: #ff4757;
+            color: white;
+            box-shadow: 0 5px 0 #cf3643;
+            position: absolute; 
+            left: 50%; /* Start centered relative to group but we will move it */
+            transform: translateX(20px); /* Offset slightly */
+        }
+
+        /* The Mini Game Section */
+        #game-area {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .score-board {
+            font-size: 1.5em;
+            color: #ff6b81;
+            margin-bottom: 10px;
+        }
+
+        .catch-me {
+            width: 60px;
+            height: 60px;
+            background-color: #ff6b81;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+            user-select: none;
+            box-shadow: 0 5px 15px rgba(255, 107, 129, 0.4);
+            transition: top 0.3s, left 0.3s; 
+        }
+
+        /* The Final Gift Reveal */
+        #gift-reveal {
+            display: none;
+            animation: popIn 0.5s ease;
+        }
+
+        .gift-box {
+            font-size: 80px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+    </style>
 </head>
-
 <body>
 
-<h1>💖 Noor - 3 Years of Love 💖</h1>
-<p>Since 8 Feb 2024 💕</p>
+    <div class="container" id="stage1">
+        <h1>Happy 3 Years! 🐻</h1>
+        <p>I got you a gift, but... are you the <b>best girlfriend</b> in the world?</p>
+        
+        <div class="btn-group">
+            <button class="yes-btn" onclick="startGame()">YES! (Click Me)</button>
+            <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">NO</button>
+        </div>
+    </div>
 
-<button onclick="startHeartGame()">Start Love Challenge 🎮</button>
+    <div class="container" id="stage2" style="display: none; height: 400px;">
+        <h1>Prove It! 🎮</h1>
+        <p>Catch <b>10 Hearts</b> to unlock your gift!</p>
+        <div class="score-board">Score: <span id="score">0</span>/10</div>
+        
+        <div class="catch-me" id="target" onclick="catchHeart()">❤️</div>
+    </div>
 
-<div id="heartGame">
-<h2>💘 Catch The Hearts 💘</h2>
-<p>Score: <span id="score">0</span></p>
-<div id="gameArea"></div>
-<button onclick="startQuiz()">Next Game ➡</button>
-</div>
+    <div class="container" id="gift-reveal">
+        <h1>YAY! YOU DID IT! 🎉</h1>
+        <div class="gift-box">🎁</div>
+        <p><b>My gift to you is:</b></p>
+        <h2>[ INSERT YOUR GIFT HERE ]</h2>
+        <p><i>(Dinner? A necklace? A massage coupon? Edit this text!)</i></p>
+        <br>
+        <p>I love you so much! ❤️</p>
+        <button class="yes-btn" onclick="location.reload()">Replay</button>
+    </div>
 
-<div id="quizSection">
-<h2>💖 Love Quiz 💖</h2>
+    <script>
+        /* --- LOGIC FOR THE RUNAWAY 'NO' BUTTON --- */
+        const noBtn = document.getElementById('noBtn');
+        
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            
+            // Make the button fixed so it can fly anywhere on screen
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
 
-<p>Who loves more?</p>
-<button onclick="alert('Correct answer: BOTH 😘')">Me 😎</button>
-<button onclick="alert('Correct answer: BOTH 😘')">You 😍</button>
+        /* --- LOGIC FOR THE GAME --- */
+        let score = 0;
+        const target = document.getElementById('target');
+        const scoreDisplay = document.getElementById('score');
+        const gameContainer = document.getElementById('stage2');
 
-<p>Who is more cute?</p>
-<button onclick="alert('Obviously Noor 👑')">Noor 👑</button>
-<button onclick="alert('Still Noor 👑')">Also Noor 😆</button>
+        function startGame() {
+            document.getElementById('stage1').style.display = 'none';
+            document.getElementById('stage2').style.display = 'block';
+            moveHeart(); // Start position
+        }
 
-<button onclick="showFinal()">Finish 💕</button>
-</div>
+        function moveHeart() {
+            // Calculate random position within the white container
+            // We use 300px because container height is fixed/limited
+            const x = Math.random() * 250; 
+            const y = Math.random() * 250;
+            
+            // Reset position to relative inside the box
+            target.style.transform = `translate(${x}px, ${y}px)`;
+        }
 
-<div id="finalMessage">
-<h2>🥰 Forever Together 🥰</h2>
-<p>
-Three years with you feel magical ✨<br>
-Every smile is my favorite 💖<br>
-Every hug feels like home 🏡<br><br>
-I choose you forever ❤️
-</p>
-</div>
+        function catchHeart() {
+            score++;
+            scoreDisplay.innerText = score;
+            
+            if(score >= 10) {
+                endGame();
+            } else {
+                moveHeart();
+            }
+        }
 
-<script>
-let score = 0;
-let gameInterval;
+        function endGame() {
+            document.getElementById('stage2').style.display = 'none';
+            document.getElementById('gift-reveal').style.display = 'block';
+            launchConfetti();
+        }
 
-function startHeartGame() {
-  document.getElementById("heartGame").style.display = "block";
-  score = 0;
-  document.getElementById("score").innerText = score;
-  spawnHeart();
-  gameInterval = setInterval(spawnHeart, 700);
-  setTimeout(() => clearInterval(gameInterval), 30000); // 30 sec game
-}
-
-function spawnHeart() {
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "💖";
-  heart.style.left = Math.random() * 90 + "%";
-  heart.style.top = "0px";
-  document.getElementById("gameArea").appendChild(heart);
-
-  let fall = setInterval(() => {
-    heart.style.top = heart.offsetTop + 5 + "px";
-    if (heart.offsetTop > 350) {
-      heart.remove();
-      clearInterval(fall);
-    }
-  }, 40);
-
-  heart.onclick = function() {
-    score++;
-    document.getElementById("score").innerText = score;
-    heart.remove();
-    clearInterval(fall);
-  }
-}
-
-function startQuiz() {
-  document.getElementById("quizSection").style.display = "block";
-}
-
-function showFinal() {
-  document.getElementById("finalMessage").style.display = "block";
-}
-</script>
-
+        /* --- CONFETTI EFFECT (Simple) --- */
+        function launchConfetti() {
+            // Just a fun little console log, or you could add a library here.
+            // For simplicity, we just change the background to celebrate.
+            document.body.style.background = "linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%)";
+        }
+    </script>
 </body>
 </html>
